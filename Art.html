@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Art</title>
+
+<style>
+/* ---------- Body ---------- */
+body { 
+    display: flex; 
+    flex-direction: column; 
+    min-height: 100vh; 
+    background: #111;
+    margin: 0; 
+    color: white; 
+    font-family: Arial, sans-serif;
+}
+
+/* ---------- Header ---------- */
+#header {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 0;
+    background: #111;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+#one {
+    font-size: 40px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 20px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+}
+
+.nav-links a:hover {
+    text-decoration: underline;
+}
+
+/* ---------- Main ---------- */
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+h1 {
+    margin-bottom: 30px;
+}
+
+/* ---------- GRID ---------- */
+.art-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 15px;
+    max-width: 1100px;
+    width: 100%;
+}
+
+.art-grid img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.art-grid img:hover {
+    transform: scale(1.05);
+}
+
+/* ---------- MODAL (ENLARGE) ---------- */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.9);
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+.modal img {
+    max-width: 90%;
+    max-height: 80%;
+    margin-bottom: 15px;
+}
+
+.modal .modal-title {
+    font-size: 22px;
+}
+
+/* ---------- Footer ---------- */
+footer {
+    text-align: center;
+    margin-top: auto;
+    padding: 20px;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 900px) {
+    .art-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 500px) {
+    .art-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- Header -->
+<div id="header">
+    <div id="one">ADRIEN MATHIEU DESIGNS</div>
+    <div class="nav-links">
+        <a href="Home.html">Home</a>
+        <a href="Lighting.html">Lighting</a>
+        <a href="Video.html">Video</a>
+        <a href="Art.html">Art</a>
+        <a href="About.html">About</a>
+    </div>
+</div>
+
+<!-- Main -->
+<main>
+    <h1>ARTWORK</h1>
+    <small> Click to Enlarge</small>
+    <br>
+
+    <div class="art-grid">
+        <img src="PRINT1.png" alt="Self Portrait" data-title="SELF PORTRAIT PRINT #1" onclick="openModal(this)">
+        <img src="PRINT2.png" alt="Self Portrait 2" data-title="SELF PORTRAIT PRINT #2" onclick="openModal(this)">
+        <img src="ART3.png" alt="Pas Seul" data-title="PAS SEUL" onclick="openModal(this)">
+        <img src="ART2.jpg" alt="AIC Copy Project" data-title="AIC COPY PROJECT" onclick="openModal(this)">
+        <img src="ART4.jpg" alt="Watercolor 1" data-title="Out On The Water" onclick="openModal(this)">
+        <img src="ART1.jpg" alt="Anger" data-title="ANGER" onclick="openModal(this)">
+        <img src="MATHIEU_MYTHICAL CREATURES-01.PNG" alt="Mythical Creature #1" data-title="MYTHICAL CREATURE #1" onclick="openModal(this)">
+        <img src="MATHIEU_MYTHICAL CREATURES-02.PNG" alt="Mythical Creature #2" data-title="MYTHICAL CREATURE #2" onclick="openModal(this)">
+        <img src="MATHIEU_MYTHICAL CREATURES-03.PNG" alt="Mythical Creature #3" data-title="MYTHICAL CREATURE #3" onclick="openModal(this)">
+
+    </div>
+</main>
+
+<!-- Modal -->
+<div class="modal" id="modal" onclick="closeModal()">
+    <img id="modal-img">
+    <div class="modal-title" id="modal-title"></div>
+</div>
+
+<!-- Script -->
+<script>
+function openModal(img) {
+    document.getElementById("modal").style.display = "flex";
+    document.getElementById("modal-img").src = img.src;
+    document.getElementById("modal-title").textContent = img.dataset.title;
+}
+
+function closeModal() {
+    document.getElementById("modal").style.display = "none";
+}
+</script>
+
+<!-- Footer -->
+<footer>
+    <small>&copy;2026 - Adrien Mathieu</small>
+</footer>
+
+</body>
+</html>

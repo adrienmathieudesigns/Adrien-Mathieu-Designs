@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Lighting</title>
+    <link rel="stylesheet" href="A.M.D.Style.css">
+
+    <style>
+        /* ---------- Body ---------- */
+        body { 
+            display: flex; 
+            flex-direction: column; 
+            min-height: 100vh; 
+            background: #111; /* black background */
+            margin: 0; 
+            color: white; /* white text for visibility */
+            font-family: Arial, sans-serif;
+        }
+
+        /* ---------- Header (HOME page style) ---------- */
+        #header {
+            width: 100%;
+            font-family: initial;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px 0;
+            background: #111;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        #one {
+            font-size: 40px;
+            font-weight: bold;
+            margin: 0 0 10px 0;
+            text-align: center;
+            color: white;
+        }
+
+        #two {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            text-decoration: underline;
+        }
+
+        /* ---------- Image Hover Effect ---------- */
+        .image-container {
+            position: relative;
+            display: inline-block;
+            margin: 10px;
+        }
+
+        .image-container img {
+            display: block;
+            width: 400px;
+            height: 290px;
+            transition: 0.4s ease;
+        }
+
+        .image-container .overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            text-align: center;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            pointer-events: none;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+        }
+
+        .image-container:hover img {
+            filter: blur(5px);
+        }
+
+        .image-container:hover .overlay {
+            opacity: 1;
+        }
+
+        /* ---------- Center Gallery ---------- */
+        #gallery {
+            text-align: center;
+        }
+
+        #gallery small {
+            display: block;
+            margin-bottom: 20px;
+        }
+
+        /* ---------- Main Heading ---------- */
+        h1 {
+            color: white;
+        }
+
+        /* ---------- Footer ---------- */
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            color: white;
+        }
+    </style>
+</head>
+
+<body id="main">
+    <!-- Header -->
+    <div id="header">
+        <div id="one">ADRIEN MATHIEU DESIGNS</div>
+        <div id="two">
+            <div class="nav-links">
+                <a href="Home.html">Home</a>
+                <a href="Lighting.html">Lighting</a>
+                <a href="Video.html">Video</a>
+                <a href="Art.html">Art</a>
+                <a href="About.html">About</a>
+            </div>
+        </div>
+    </div>
+
+    <br><br>
+
+    <!-- Main Content -->
+    <main>
+
+        <div id="gallery">
+
+            <div class="image-container">
+                <a href="LeftUnheard.html">
+                    <img src="LU1.jpg" alt="Grimm Tales">
+                    <div class="overlay">Left Unheard</div>
+                </a>
+            </div>
+
+            <div class="image-container">
+                <a href="Grimm Tales.html">
+                    <img src="GT10.jpg" alt="Grimm Tales">
+                    <div class="overlay">Grimm Tales</div>
+                </a>
+            </div>
+
+            <div class="image-container">
+                <a href="HurricaneDiane.html">
+                    <img src="HD4.jpg" alt="Grimm Tales">
+                    <div class="overlay">Hurricane Diane</div>
+                </a>
+            </div>
+
+            <div class="image-container">
+                <a href="AddamsFamily.html">
+                    <img src="AF1.jpg" alt="Grimm Tales">
+                    <div class="overlay">Addams Fanily</div>
+                </a>
+            </div>
+            
+            <div class="image-container">
+                <a href="Cabaret.html">
+                    <img src="C2.jpg" alt="Grimm Tales">
+                    <div class="overlay">Cabaret</div>
+                </a>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <small>&copy;2026 - Adrien Mathieu</small>
+    </footer>
+</body>
+</html>

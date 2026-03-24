@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>About</title>
+
+<style>
+/* ---------- Body ---------- */
+body {
+    display: flex; 
+    flex-direction: column; 
+    min-height: 100vh; 
+    background: #111; /* black background */
+    margin: 0; 
+    color: white; /* white text for visibility */
+    font-family: Arial, sans-serif;
+}
+
+/* ---------- Header (from Lighting page) ---------- */
+#header {
+    width: 100%;
+    font-family: initial;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 0;
+    background: #111;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+#one {
+    font-size: 40px;
+    font-weight: bold;
+    margin: 0 0 10px 0;
+    text-align: center;
+    color: white;
+}
+
+#two {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.nav-links {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.nav-links a:hover {
+    text-decoration: underline;
+}
+
+/* ---------- About Section ---------- */
+#about {
+    display: flex;
+    justify-content: center; /* center the article horizontally */
+    margin-top: 50px;
+    width: 100%;
+}
+
+#about article {
+    display: flex;
+    gap: 40px;
+    max-width: 1050px;
+    flex-wrap: wrap;
+    justify-content: center; /* center contents if wrapping */
+    align-items: center; /* vertical alignment */
+}
+
+#about img {
+    width: 500px;
+    height: 500px;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+#about .text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 15px;
+    max-width: 500px;
+}
+
+#about input[type="button"] {
+    background-color: #222;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    margin: 5px;
+}
+
+#about input[type="button"]:hover {
+    background-color: #444;
+}
+
+/* ---------- Footer ---------- */
+footer {
+    text-align: center;
+    margin-top: 40px;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- Header (from Lighting page) -->
+<div id="header">
+    <div id="one">ADRIEN MATHIEU DESIGNS</div>
+    <div id="two">
+        <div class="nav-links">
+            <a href="Home.html">Home</a>
+            <a href="Lighting.html">Lighting</a>
+            <a href="Video.html">Video</a>
+            <a href="Art.html">Art</a>
+            <a href="About.html">About</a>
+        </div>
+    </div>
+</div>
+
+<!-- About Section -->
+<!-- About Section -->
+<div id="about">
+    <article>
+        <img src="ABOUT.png" alt="Adrien Mathieu">
+        <div class="text">
+            <p>
+            Originally born in Portland, Oregon, Adrien Mathieu is a Lighting Designer and Artist living and working in Chicago, Illinois. Currently, Adrien is a senior at The Theatre School of DePaul University, working towards a BFA in Lighting Design. Adrien is a hard working, quick thinker, who is always looking to learn somthing new.
+            
+            <br><br> <small>"In my mind, meaningful art does three things: It makes us reconsider the world around us, it captivates us visually, and finally it is fun and fulfilling to create and experience." 
+            <br>- Adrien Mathieu
+            
+
+            <br><br> "He personifies many of the characteristics needed to be successful in this industry - talent, dedication, and commitment to collaboration." 
+            <br> - Chris Binder (Head of Lighting Program At DePaul)
+
+            <br><br>"It has been a real and sincere pleasure to work with Adrien. He is intelligent, creative, energetic, and very personable." 
+            <br>- Michael Rourke (Lighting Designer)
+
+            <br><br>"I had the opportunity to collaborate with Adrien on Left Unheard in the spring of 2025. The production of a new large-scale work at The Theatre School at DePaul University required solid design and a deep understanding of color and form. Adrien met the challenge with technical precision, artistic sensitivity, and collaborative generosity that will make them an asset to your team."
+            <br> - Denise Yevette Serna (Director)</small>
+
+<div>
+    <a href="MATHIEU_RESUME.pdf"><input type="button" value="RESUME"></a>
+    <a href="MATHIEU_CV.pdf"><input type="button" value="CV"></a>
+    <input type="button" value="CONTACT" onclick="openModal()">
+</div>
+
+<!-- Modal -->
+<div id="contactModal" style="
+    display: none; 
+    position: fixed; 
+    top: 0; left: 0; 
+    width: 100%; height: 100%; 
+    background-color: rgba(0,0,0,0.7); 
+    justify-content: center; 
+    align-items: center; 
+    z-index: 10000;
+">
+    <div style="
+        background: #111; 
+        padding: 30px; 
+        border-radius: 10px; 
+        color: white; 
+        text-align: center; 
+        max-width: 400px; 
+        width: 80%;
+        position: relative;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    ">
+        <p style="margin-bottom: 20px;">You can email me at <br> AdrienMathieuLX@gmail.com</p>
+        <button onclick="closeModal()" style="
+            padding: 8px 16px; 
+            background: #444; 
+            color: white; 
+            border: none; 
+            border-radius: 5px; 
+            cursor: pointer;
+        ">Close</button>
+    </div>
+</div>
+
+<script>
+function openModal() {
+    const modal = document.getElementById('contactModal');
+    modal.style.display = 'flex';
+}
+
+function closeModal() {
+    const modal = document.getElementById('contactModal');
+    modal.style.display = 'none';
+}
+
+// Optional: close modal if clicking outside the popup
+window.onclick = function(event) {
+    const modal = document.getElementById('contactModal');
+    if (event.target == modal) {
+        modal.style.display = 'none';
+    }
+}
+</script>
+        </div>
+    </article>
+</div>
+
+<!-- Footer -->
+<footer id="main">
+    <small>&copy;2026 - Adrien Mathieu</small>
+</footer>
+
+</body>
+</html>

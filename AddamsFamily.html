@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Left Unheard</title>
+
+<style>
+/* Body & general layout */
+body { 
+    display: flex; 
+    flex-direction: column; 
+    min-height: 100vh; 
+    background: #111; 
+    margin: 0; 
+    color: white; 
+    font-family: Arial, sans-serif;
+}
+
+/* Header (HOME page style) */
+#header {
+    width: 100%;
+    font-family: initial;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 0;
+    background: #111;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+#one {
+    font-size: 40px;
+    font-weight: bold;
+    margin: 0 0 10px 0;
+    text-align: center;
+}
+
+#two {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.nav-links {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.nav-links a:hover {
+    text-decoration: underline;
+}
+
+/* Main content */
+#main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+/* Slider */
+.slider { 
+    position: relative; 
+    width: 1000px; 
+    height: 700px; 
+    overflow: hidden; 
+    margin-top: 20px;
+} 
+
+.slides { 
+    display: flex; 
+    width: 100%; 
+    height: 100%; 
+    transition: transform 0.6s ease-in-out; 
+} 
+
+.slide {
+    flex: 0 0 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: black;
+}
+
+.slide img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+/* Arrows */
+.arrow { 
+    position: absolute; 
+    top: 50%; 
+    transform: translateY(-50%); 
+    font-size: 30px; 
+    background: rgba(0,0,0,0.5); 
+    color: white; 
+    border: none; 
+    cursor: pointer; 
+    padding: 10px; 
+    z-index: 10;
+}
+
+.left { left: 10px; } 
+.right { right: 10px; } 
+
+/* Description + Credits layout */
+.description-credits {
+    display: flex;
+    align-items: flex-start;
+    gap: 60px;
+    margin-top: 40px;
+    max-width: 900px;
+    width: 100%;
+}
+
+.description,
+.credits {
+    flex: 1;
+}
+
+.description {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.title {
+    font-size: 26px;
+    font-weight: bold;
+    margin: 0 0 6px 0;
+}
+
+.subtext {
+    font-size: 14px;
+    margin: 2px 0;
+    opacity: 0.8;
+}
+
+.description a {
+    color: white;       
+    text-decoration: none; 
+    transition: all 0.3s ease;
+}
+
+.description a:hover {
+    text-decoration: underline;
+}
+
+/* Credits */
+.credits h2 {
+    margin: 0 0 15px 0;
+    font-size: 26px;
+    border-bottom: 1px solid #444;
+    padding-bottom: 5px;
+}
+
+.credit-item {
+    display: flex;
+    padding: 5px 0;
+    font-size: 16px;
+}
+
+.role {
+    font-weight: bold;
+}
+
+.name {
+    margin-left: auto;
+    text-align: right;
+    opacity: 0.9;
+}
+
+/* Footer */
+footer {
+    margin-top: auto;
+    text-align: center;
+    padding: 20px 0;
+}
+
+/* Responsive slider & description on small screens */
+@media (max-width: 1024px) {
+    .slider {
+        width: 90%;
+        height: auto;
+    }
+
+    .description-credits {
+        flex-direction: column;
+        gap: 20px;
+        align-items: flex-start;
+        margin-top: 30px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- Header -->
+<div id="header">
+    <div id="one">ADRIEN MATHIEU DESIGNS</div>
+    <div id="two">
+        <div class="nav-links">
+            <a href="Home.html">Home</a>
+            <a href="Lighting.html">Lighting</a>
+            <a href="Video.html">Video</a>
+            <a href="Art.html">Art</a>
+            <a href="About.html">About</a>
+        </div>
+    </div>
+</div>
+
+<div id="main-content">
+
+<!-- Slider -->
+<div class="slider"> 
+    <button class="arrow left" onclick="prevSlide()">❮</button>
+    <div class="slides" id="slides"> 
+        <div class="slide"><img src="AF9.jpg"></div>
+        <div class="slide"><img src="AF4.jpg"></div>
+        <div class="slide"><img src="AF6.jpg"></div>
+        <div class="slide"><img src="AF10.jpg"></div>
+        <div class="slide"><img src="AF11.jpg"></div>
+        <div class="slide"><img src="AF2.jpg"></div>
+        <div class="slide"><img src="AF21.jpg"></div>
+    </div>
+    <button class="arrow right" onclick="nextSlide()">❯</button>
+</div>
+
+<!-- Description & Credits -->
+<div class="description-credits">
+    <div class="description">
+        <p class="title">Left Unheard By Perse Grammar (2025)</p>
+        <p class="subtext">The Theater School At DePaul University</p>
+        <p class="subtext">Photos by Michael Brosilow</p>
+        <a href="https://www.flipsnack.com/thetheatreschool/left-unheard/full-view.html">
+            <p class="subtext">Program Link</p>
+        </a>
+
+        <div class="credits">
+            <h2>Production Team</h2>
+
+            <div class="credit-item">
+                <span class="role">Director:</span>
+                <span class="name">Denise Yevette Serna</span>
+            </div>
+
+            <div class="credit-item">
+                <span class="role">Scenic Designer:</span>
+                <span class="name">Izaak Kary</span>
+            </div>
+
+            <div class="credit-item">
+                <span class="role">Costume Designer:</span>
+                <span class="name">Spencer Harrigan</span>
+            </div>
+
+            <div class="credit-item">
+                <span class="role">Lighting Designer:</span>
+                <span class="name">Adrien Mathieu</span>
+            </div>
+
+            <div class="credit-item">
+                <span class="role">Sound Designer:</span>
+                <span class="name">Mia Howard</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+</div>
+
+<!-- Slider Script -->
+<script>
+let index = 0;
+const slides = document.getElementById("slides");
+const totalSlides = slides.children.length;
+let slideInterval;
+
+function updateSlide() {
+    slides.style.transform = "translateX(" + (-index * 100) + "%)";
+}
+
+function nextSlide() {
+    index = (index + 1) % totalSlides;
+    updateSlide();
+    resetInterval();
+}
+
+function prevSlide() {
+    index = (index - 1 + totalSlides) % totalSlides;
+    updateSlide();
+    resetInterval();
+}
+
+function startInterval() {
+    slideInterval = setInterval(nextSlide, 10000);
+}
+
+function resetInterval() {
+    clearInterval(slideInterval);
+    startInterval();
+}
+
+startInterval();
+</script>
+
+<!-- Footer -->
+<footer>
+    <small>&copy;2026 - Adrien Mathieu</small>
+</footer>
+
+</body>
+</html>
