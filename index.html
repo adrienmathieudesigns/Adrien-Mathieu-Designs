@@ -14,6 +14,17 @@ body {
     margin: 0; 
     color: white; 
     font-family: Arial, sans-serif;
+
+    /* Fade setup */
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+/* When loaded */
+body.loaded {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 /* All links site-wide */
@@ -30,7 +41,7 @@ a:hover {
 /* Header */
 #header {
     width: 100%;
-    font-family:initial;
+    font-family: initial;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -208,6 +219,11 @@ function resetInterval() {
 }
 
 startInterval();
+
+/* Fade-in trigger */
+window.addEventListener("load", () => {
+    document.body.classList.add("loaded");
+});
 </script>
 
 <!-- Footer -->
