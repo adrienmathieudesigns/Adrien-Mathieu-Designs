@@ -7,15 +7,26 @@
 
     <style>
         /* ---------- Body ---------- */
-        body { 
-            display: flex; 
-            flex-direction: column; 
-            min-height: 100vh; 
-            background: #111; /* black background */
-            margin: 0; 
-            color: white; /* white text for visibility */
-            font-family: Arial, sans-serif;
-        }
+body { 
+    display: flex; 
+    flex-direction: column; 
+    min-height: 100vh; 
+    background: #111; 
+    margin: 0; 
+    color: white; 
+    font-family: initial;
+
+    /* Fade setup */
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+/* When loaded */
+body.loaded {
+    opacity: 1;
+    transform: translateY(0);
+}
 
         /* ---------- Header (HOME page style) ---------- */
         #header {
@@ -122,6 +133,13 @@
         }
     </style>
 </head>
+
+    <script>
+window.addEventListener("load", () => {
+    document.body.classList.add("loaded");
+});
+</script>
+    
 
 <body id="main">
     <!-- Header -->
