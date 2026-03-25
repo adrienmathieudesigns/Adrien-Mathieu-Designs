@@ -6,14 +6,25 @@
 
 <style>
 /* ---------- Body ---------- */
-body {
+body { 
     display: flex; 
     flex-direction: column; 
     min-height: 100vh; 
-    background: #111; /* black background */
+    background: #111; 
     margin: 0; 
-    color: white; /* white text for visibility */
+    color: white; 
     font-family: Arial, sans-serif;
+
+    /* Fade setup */
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+/* When loaded */
+body.loaded {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 /* ---------- Header (from Lighting page) ---------- */
@@ -116,6 +127,12 @@ footer {
 </style>
 </head>
 
+<script>
+window.addEventListener("load", () => {
+    document.body.classList.add("loaded");
+});
+</script>
+    
 <body>
 
 <!-- Header (from Lighting page) -->
