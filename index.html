@@ -15,19 +15,17 @@ body {
     color: white; 
     font-family: Arial, sans-serif;
 
-    /* Fade setup */
     opacity: 0;
     transform: translateY(20px);
     transition: opacity 0.8s ease, transform 0.8s ease;
 }
 
-/* When loaded */
 body.loaded {
     opacity: 1;
     transform: translateY(0);
 }
 
-/* All links site-wide */
+/* Links */
 a {
     color: white;
     text-decoration: none;
@@ -41,11 +39,9 @@ a:hover {
 /* Header */
 #header {
     width: 100%;
-    font-family: initial;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
     padding: 20px 0;
     background: #111;
     position: sticky;
@@ -53,35 +49,23 @@ a:hover {
     z-index: 1000;
 }
 
-/* Title */
 #one {
     font-size: 40px;
     font-weight: bold;
-    margin: 0 0 10px 0;
-    text-align: center;
+    margin-bottom: 10px;
 }
 
-/* Nav container */
-#two {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-/* Nav Links spacing */
 .nav-links {
     display: flex;
     gap: 20px;
-    justify-content: center;
 }
 
-/* Main content */
+/* Main */
 #main-content {
     flex: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 100%;
 }
 
 /* Slider */
@@ -131,6 +115,21 @@ a:hover {
 .left { left: 10px; } 
 .right { right: 10px; } 
 
+/* Quotes Section */
+.quote {
+    max-width: 600px;
+    margin: 25px auto;
+    text-align: center;
+    line-height: 1.6;
+    font-size: 16px;
+}
+
+.quote-author {
+    margin-top: 8px;
+    font-size: 14px;
+    opacity: 0.8;
+}
+
 /* Footer */
 footer {
     margin-top: auto;
@@ -154,15 +153,12 @@ footer {
 <!-- Header -->
 <div id="header">
     <div id="one">ADRIEN MATHIEU DESIGNS</div>
-
-    <div id="two">
-        <div class="nav-links">
-            <a href="index.html">Home</a>
-            <a href="Lighting.html">Lighting</a>
-            <a href="Video.html">Video</a>
-            <a href="Art.html">Art</a>
-            <a href="About.html">About</a>
-        </div>
+    <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="Lighting.html">Lighting</a>
+        <a href="Video.html">Video</a>
+        <a href="Art.html">Art</a>
+        <a href="About.html">About</a>
     </div>
 </div>
 
@@ -183,19 +179,26 @@ footer {
 
     <button class="arrow right" onclick="nextSlide()">❯</button>
 </div>
-    <h5 style="text-align:center;">"He personifies many of the characteristics needed to be successful in this industry - talent, dedication, and commitment to collaboration." 
-            <br> - Chris Binder (Head of Lighting Program At DePaul)</h5>
 
-    <h5 style="text-align:center;">"It has been a real and sincere pleasure to work with Adrien. He is intelligent, creative, energetic, and very personable." 
-            <br>- Michael Rourke (Lighting Designer)</h5>
-    
-    <h5 style="text-align:center;" max-width: 100px>"I had the opportunity to collaborate with Adrien on Left Unheard in the spring of 2025. The production of a new large-scale work at The Theatre School at DePaul University required solid design and a deep understanding of color and form. Adrien met the challenge with technical precision, artistic sensitivity, and collaborative generosity that will make them an asset to your team."
-            <br> - Denise Yevette Serna (Director)" </h5>
-
-    
+<!-- Quotes -->
+<div class="quote">
+    <p>"He personifies many of the characteristics needed to be successful in this industry - talent, dedication, and commitment to collaboration."</p>
+    <div class="quote-author">— Chris Binder (Head of Lighting Program at DePaul)</div>
 </div>
 
-<!-- Slider Script -->
+<div class="quote">
+    <p>"It has been a real and sincere pleasure to work with Adrien. He is intelligent, creative, energetic, and very personable."</p>
+    <div class="quote-author">— Michael Rourke (Lighting Designer)</div>
+</div>
+
+<div class="quote">
+    <p>"I had the opportunity to collaborate with Adrien on Left Unheard in the spring of 2025. The production required solid design and a deep understanding of color and form. Adrien met the challenge with technical precision, artistic sensitivity, and collaborative generosity."</p>
+    <div class="quote-author">— Denise Yevette Serna (Director)</div>
+</div>
+
+</div>
+
+<!-- Script -->
 <script>
 let index = 0;
 const slides = document.getElementById("slides");
@@ -229,7 +232,7 @@ function resetInterval() {
 
 startInterval();
 
-/* Fade-in trigger */
+/* Fade-in */
 window.addEventListener("load", () => {
     document.body.classList.add("loaded");
 });
