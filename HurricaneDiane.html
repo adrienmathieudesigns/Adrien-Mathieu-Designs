@@ -13,7 +13,12 @@ body {
     background: #111; 
     margin: 0; 
     color: white; 
-    font-family: Arial, sans-serif;
+    font-family: initial;
+
+    /* Fade setup */
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
 }
 
 /* Header (HOME page style) */
@@ -247,7 +252,12 @@ function toggleMenu() {
     const links = document.getElementById("navLinks");
     links.classList.toggle("show");
 }
+    
+window.addEventListener("load", () => {
+    document.body.classList.add("loaded");
+});
 </script>
+    
 </head>
 
 <body>
