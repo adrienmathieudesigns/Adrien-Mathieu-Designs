@@ -2,10 +2,10 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Grimm Tales</title>
+<title>Home</title>
 
 <style>
-/* Body & general layout */
+/* Body */
 body { 
     display: flex; 
     flex-direction: column; 
@@ -13,17 +13,36 @@ body {
     background: #111; 
     margin: 0; 
     color: white; 
-    font-family: Arial, sans-serif;
+    font-family: initial;
+
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
 }
 
-/* Header (HOME page style) */
+body.loaded {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Links */
+a {
+    color: white;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Header */
 #header {
     width: 100%;
     font-family: initial;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
     padding: 20px 0;
     background: #111;
     position: sticky;
@@ -34,85 +53,20 @@ body {
 #one {
     font-size: 40px;
     font-weight: bold;
-    margin: 0 0 10px 0;
-    text-align: center;
+    margin-bottom: 10px;
 }
 
-
-#two {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-}
-
-/* Nav Links */
 .nav-links {
     display: flex;
     gap: 20px;
-    align-items: center;
 }
 
-.nav-links a {
-    color: white;
-    text-decoration: none;
-    transition: all 0.3s ease; /* smooth underline transition */
-}
-
-.description a {
-    color: white;       /* Make program link white */
-    text-decoration: none; 
-    transition: all 0.3s ease;
-}
-
-.description a:hover {
-    text-decoration: underline;  /* Underline on hover */
-}
-
-.nav-links a:hover {
-    text-decoration: underline; /* underline on hover */
-}
-
-/* Menu button (only shows on small screens) */
-.navbar-toggle {
-    display: none;
-    font-size: 20px;
-    cursor: pointer;
-    background: none;
-    border: none;
-    color: white;
-}
-
-/* Responsive behavior */
-@media (max-width: 700px) {
-    .navbar-toggle {
-        display: block;
-    }
-
-    .nav-links {
-        display: none;
-        flex-direction: column;
-        width: 100%;
-        margin-top: 10px;
-    }
-
-    .nav-links.show {
-        display: flex;
-    }
-
-    #two {
-        flex-direction: column;
-        align-items: flex-end;
-        width: 100%;
-    }
-}
-
-/* Main content */
+/* Main */
 #main-content {
     flex: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 100%;
 }
 
 /* Slider */
@@ -162,61 +116,19 @@ body {
 .left { left: 10px; } 
 .right { right: 10px; } 
 
-/* Description + Credits layout */
-.description-credits {
-    display: flex;
-    align-items: flex-start;
-    gap: 60px;
-    margin-top: 40px;
-    max-width: 900px;
-    width: 100%;
-}
-
-.description,
-.credits {
-    flex: 1;
-}
-
-.description {
-    display: flex;
-    flex-direction: column;
-    text-align: left;
-}
-
-.title {
-    font-size: 26px;
-    font-weight: bold;
-    margin: 0 0 6px 0;
-}
-
-.subtext {
-    font-size: 14px;
-    margin: 2px 0;
-    opacity: 0.8;
-}
-
-/* Credits */
-.credits h2 {
-    margin: 0 0 15px 0;
-    font-size: 26px;
-    border-bottom: 1px solid #444;
-    padding-bottom: 5px;
-}
-
-.credit-item {
-    display: flex;
-    padding: 5px 0;
+/* Quotes Section */
+.quote {
+    max-width: 600px;
+    margin: 25px auto;
+    text-align: center;
+    line-height: 1.6;
     font-size: 16px;
 }
 
-.role {
-    font-weight: bold;
-}
-
-.name {
-    margin-left: auto;
-    text-align: right;
-    opacity: 0.9;
+.quote-author {
+    margin-top: 8px;
+    font-size: 14px;
+    opacity: 0.8;
 }
 
 /* Footer */
@@ -226,28 +138,15 @@ footer {
     padding: 20px 0;
 }
 
-/* Responsive slider & description on small screens */
+/* Responsive */
 @media (max-width: 1024px) {
     .slider {
         width: 90%;
         height: auto;
     }
-
-    .description-credits {
-        flex-direction: column;
-        gap: 20px;
-        align-items: flex-start;
-        margin-top: 30px;
-    }
 }
 </style>
 
-<script>
-function toggleMenu() {
-    const links = document.getElementById("navLinks");
-    links.classList.toggle("show");
-}
-</script>
 </head>
 
 <body>
@@ -255,16 +154,12 @@ function toggleMenu() {
 <!-- Header -->
 <div id="header">
     <div id="one">ADRIEN MATHIEU DESIGNS</div>
-
-    <div id="two">
-        <button class="navbar-toggle" onclick="toggleMenu()">☰ Menu</button>
-        <div class="nav-links" id="navLinks">
-            <a href="index.html">Home</a>
-            <a href="Lighting.html">Lighting</a>
-            <a href="Video.html">Video</a>
-            <a href="Art.html">Art</a>
-            <a href="About.html">About</a>
-        </div>
+    <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="Lighting.html">Lighting</a>
+        <a href="Video.html">Video</a>
+        <a href="Art.html">Art</a>
+        <a href="About.html">About</a>
     </div>
 </div>
 
@@ -336,7 +231,7 @@ function toggleMenu() {
 
 </div>
 
-<!-- Slider Script -->
+<!-- Script -->
 <script>
 let index = 0;
 const slides = document.getElementById("slides");
@@ -369,6 +264,11 @@ function resetInterval() {
 }
 
 startInterval();
+
+/* Fade-in */
+window.addEventListener("load", () => {
+    document.body.classList.add("loaded");
+});
 </script>
 
 <!-- Footer -->
