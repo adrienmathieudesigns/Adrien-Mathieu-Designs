@@ -2,31 +2,31 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Lighting</title>
+    <title>Lighting Design</title>
     <link rel="stylesheet" href="A.M.D.Style.css">
 
     <style>
         /* ---------- Body ---------- */
-body { 
-    display: flex; 
-    flex-direction: column; 
-    min-height: 100vh; 
-    background: #111; 
-    margin: 0; 
-    color: white; 
-    font-family: initial;
-
-    /* Fade setup */
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.8s ease, transform 0.8s ease;
-}
-
-/* When loaded */
-body.loaded {
-    opacity: 1;
-    transform: translateY(0);
-}
+        body { 
+            display: flex; 
+            flex-direction: column; 
+            min-height: 100vh; 
+            background: #111; 
+            margin: 0; 
+            color: white; 
+            font-family: initial;
+        
+            /* Fade setup */
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        
+        /* When loaded */
+        body.loaded {
+            opacity: 1;
+            transform: translateY(0);
+        }
 
         /* ---------- Header (HOME page style) ---------- */
         #header {
@@ -140,7 +140,6 @@ window.addEventListener("load", () => {
 });
 </script>
     
-
 <body id="main">
     <!-- Header -->
     <div id="header">
@@ -160,27 +159,48 @@ window.addEventListener("load", () => {
 
     <!-- Main Content -->
     <main>
-        <h1 style="text-align:center;">LIGHTING DESIGNS</h1>
+        <h1 style="text-align:center;">Lighting Design</h1>
         <div id="gallery">
 
             <div class="image-container">
-                <a href="Theater.html">
-                    <img src="GT10.jpg" alt="Theater">
-                    <div class="overlay">Theater</div>
+                <a href="LeftUnheard.html">
+                    <img src="LU1.jpg" alt="Left Unheard">
+                    <div class="overlay">Left Unheard</div>
+                </a>
+            </div>
+
+            <div class="image-container">
+                <a href="Grimm Tales.html">
+                    <img src="GT10.jpg" alt="Grimm Tales">
+                    <div class="overlay">Grimm Tales</div>
+                </a>
+            </div>
+
+            <div class="image-container">
+                <a href="HurricaneDiane.html">
+                    <img src="HD4.jpg" alt="Hurricaine Diane">
+                    <div class="overlay">Hurricane Diane</div>
+                </a>
+            </div>
+
+            <div class="image-container">
+                <a href="AddamsFamily.html">
+                    <img src="AF1.jpg" alt="Addams Family">
+                    <div class="overlay">Addams Fanily</div>
                 </a>
             </div>
             
             <div class="image-container">
-                <a href="Dance.html">
-                    <img src="DW1.jpg" alt="Dance">
-                    <div class="overlay">Dance</div>
+                <a href="Cabaret.html">
+                    <img src="C2.jpg" alt="Cabaret">
+                    <div class="overlay">Cabaret</div>
                 </a>
             </div>
 
             <div class="image-container">
-                <a href="Misc Lighting.html">
-                    <img src="COMING SOON.png" alt="Grimm Tales">
-                    <div class="overlay">MISC.</div>
+                <a href="DanceWest.html">
+                    <img src="DW2.jpg" alt="Dance West">
+                    <div class="overlay">Dance West</div>
                 </a>
             </div>
 
