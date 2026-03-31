@@ -117,12 +117,25 @@ a:hover {
 .right { right: 10px; } 
 
 /* Quotes Section */
-.quote {
+.quote-container {
+    position: relative;
     max-width: 600px;
     margin: 25px auto;
     text-align: center;
+}
+
+.quote {
+    position: absolute;
+    width: 100%;
+    opacity: 0;
+    transition: opacity 0.6s ease;
     line-height: 1.6;
     font-size: 16px;
+}
+
+.quote.active {
+    opacity: 1;
+    position: relative;
 }
 
 .quote-author {
@@ -182,19 +195,40 @@ footer {
 </div>
 
 <!-- Quotes -->
-<div class="quote">
-    <p>"He personifies many of the characteristics needed to be successful in this industry - talent, dedication, and commitment to collaboration."</p>
-    <div class="quote-author">— Chris Binder (Head of Lighting Program at DePaul)</div>
-</div>
+<div class="quote-container" id="quotes">
+    
+    <div class="quote active">
+        <p>
+            "He personifies many of the characteristics needed to be successful in this industry — 
+            talent, dedication, and commitment to collaboration."
+        </p>
+        <div class="quote-author">
+            — Chris Binder (Head of Lighting Program at DePaul)
+        </div>
+    </div>
 
-<div class="quote">
-    <p>"It has been a real and sincere pleasure to work with Adrien. He is intelligent, creative, energetic, and very personable."</p>
-    <div class="quote-author">— Michael Rourke (Lighting Designer)</div>
-</div>
+    <div class="quote">
+        <p>
+            "It has been a real and sincere pleasure to work with Adrien. 
+            He is intelligent, creative, energetic, and very personable."
+        </p>
+        <div class="quote-author">
+            — Michael Rourke (Lighting Designer)
+        </div>
+    </div>
 
-<div class="quote">
-    <p>"I had the opportunity to collaborate with Adrien on Left Unheard in the spring of 2025. The production required solid design and a deep understanding of color and form. Adrien met the challenge with technical precision, artistic sensitivity, and collaborative generosity."</p>
-    <div class="quote-author">— Denise Yevette Serna (Director)</div>
+    <div class="quote">
+        <p>
+            "I had the opportunity to collaborate with Adrien on Left Unheard in the spring of 2025. 
+            The production required solid design and a deep understanding of color and form. 
+            Adrien met the challenge with technical precision, artistic sensitivity, 
+            and collaborative generosity."
+        </p>
+        <div class="quote-author">
+            — Denise Yevette Serna (Director)
+        </div>
+    </div>
+
 </div>
 
 </div>
@@ -202,12 +236,22 @@ footer {
 <!-- Script -->
 <script>
 let index = 0;
+
 const slides = document.getElementById("slides");
 const totalSlides = slides.children.length;
+
+const quotes = document.querySelectorAll("#quotes .quote");
+const totalQuotes = quotes.length;
+
 let slideInterval;
 
 function updateSlide() {
+    // Move images
     slides.style.transform = "translateX(" + (-index * 100) + "%)";
+
+    // Sync quotes
+    quotes.forEach(q => q.classList.remove("active"));
+    quotes[index % totalQuotes].classList.add("active");
 }
 
 function nextSlide() {
