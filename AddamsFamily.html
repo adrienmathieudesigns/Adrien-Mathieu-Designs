@@ -5,7 +5,7 @@
 <title>Addams Family</title>
 
 <style>
-/* Body & general layout */
+/* Body */
 body { 
     display: flex; 
     flex-direction: column; 
@@ -13,17 +13,36 @@ body {
     background: #111; 
     margin: 0; 
     color: white; 
-    font-family: Arial, sans-serif;
+    font-family: initial;
+
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
 }
 
-/* Header (HOME page style) */
+body.loaded {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Links */
+a {
+    color: white;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Header */
 #header {
     width: 100%;
     font-family: initial;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
     padding: 20px 0;
     background: #111;
     position: sticky;
@@ -34,39 +53,20 @@ body {
 #one {
     font-size: 40px;
     font-weight: bold;
-    margin: 0 0 10px 0;
-    text-align: center;
-}
-
-#two {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    margin-bottom: 10px;
 }
 
 .nav-links {
     display: flex;
     gap: 20px;
-    justify-content: center;
 }
 
-.nav-links a {
-    color: white;
-    text-decoration: none;
-    transition: all 0.3s ease;
-}
-
-.nav-links a:hover {
-    text-decoration: underline;
-}
-
-/* Main content */
+/* Main */
 #main-content {
     flex: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 100%;
 }
 
 /* Slider */
@@ -150,9 +150,8 @@ body {
 }
 
 .description a {
-    color: white;       
-    text-decoration: none; 
-    transition: all 0.3s ease;
+    color: white;
+    text-decoration: none;
 }
 
 .description a:hover {
@@ -190,7 +189,7 @@ footer {
     padding: 20px 0;
 }
 
-/* Responsive slider & description on small screens */
+/* Responsive */
 @media (max-width: 1024px) {
     .slider {
         width: 90%;
@@ -205,6 +204,7 @@ footer {
     }
 }
 </style>
+
 </head>
 
 <body>
@@ -212,14 +212,12 @@ footer {
 <!-- Header -->
 <div id="header">
     <div id="one">ADRIEN MATHIEU DESIGNS</div>
-    <div id="two">
-        <div class="nav-links">
-            <a href="index.html">Home</a>
-            <a href="Lighting.html">Lighting</a>
-            <a href="Video.html">Video</a>
-            <a href="Art.html">Art</a>
-            <a href="About.html">About</a>
-        </div>
+    <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="Lighting.html">Lighting</a>
+        <a href="Video.html">Video</a>
+        <a href="Art.html">Art</a>
+        <a href="About.html">About</a>
     </div>
 </div>
 
@@ -228,6 +226,7 @@ footer {
 <!-- Slider -->
 <div class="slider"> 
     <button class="arrow left" onclick="prevSlide()">❮</button>
+
     <div class="slides" id="slides"> 
         <div class="slide"><img src="AF10.jpg"></div>
         <div class="slide"><img src="AF9.jpg"></div>
@@ -237,6 +236,7 @@ footer {
         <div class="slide"><img src="AF2.jpg"></div>
         <div class="slide"><img src="AF21.jpg"></div>
     </div>
+
     <button class="arrow right" onclick="nextSlide()">❯</button>
 </div>
 
@@ -276,7 +276,9 @@ footer {
 
 </div>
 
-<!-- Slider Script -->
+</div>
+
+<!-- Script -->
 <script>
 let index = 0;
 const slides = document.getElementById("slides");
@@ -309,6 +311,11 @@ function resetInterval() {
 }
 
 startInterval();
+
+/* Fade-in */
+window.addEventListener("load", () => {
+    document.body.classList.add("loaded");
+});
 </script>
 
 <!-- Footer -->
