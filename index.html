@@ -7,10 +7,13 @@
 <style>
 /* Body */
 body { 
+    display: flex; 
+    flex-direction: column; 
+    min-height: 100vh; 
+    background: #111; 
     margin: 0; 
     color: white; 
     font-family: initial;
-    overflow: hidden;
 
     opacity: 0;
     transform: translateY(20px);
@@ -26,27 +29,7 @@ body.locked {
     overflow: hidden;
 }
 
-/* ================= BACKGROUND SLIDES ================= */
-#background {
-    position: fixed;
-    inset: 0;
-    z-index: -1;
-}
-
-.bg-slide {
-    position: absolute;
-    inset: 0;
-    background-size: cover;
-    background-position: center;
-    opacity: 0;
-    transition: opacity 2s ease-in-out;
-}
-
-.bg-slide.active {
-    opacity: 1;
-}
-
-/* ================= ROTATE OVERLAY ================= */
+/* Rotate Overlay */
 #rotate-overlay {
     position: fixed;
     inset: 0;
@@ -61,6 +44,7 @@ body.locked {
     padding: 20px;
 }
 
+/* Hide overlay in landscape or desktop */
 @media screen and (orientation: landscape),
 screen and (min-width: 768px) {
     #rotate-overlay {
@@ -68,34 +52,34 @@ screen and (min-width: 768px) {
     }
 }
 
-/* ================= LINKS ================= */
+/* Links */
 a {
     color: white;
     text-decoration: none;
+    transition: all 0.3s ease;
 }
 
 a:hover {
     text-decoration: underline;
 }
 
-/* ================= HEADER (CENTERED OVERLAY) ================= */
+/* Header */
 #header {
     position: fixed;
-    inset: 0;
+    inset: 0; /* fills entire screen */
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background: rgba(0,0,0,0.3); /* subtle overlay for readability */
-    backdrop-filter: blur(4px);
-    z-index: 10;
+    justify-content: center; /* vertical center */
+    align-items: center;     /* horizontal center */
     text-align: center;
+    background: #111;
+    z-index: 1000;
 }
 
 #one {
     font-size: 40px;
     font-weight: bold;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
 }
 
 .nav-links {
@@ -103,28 +87,52 @@ a:hover {
     gap: 20px;
 }
 
-/* ================= FOOTER ================= */
-footer {
-    position: fixed;
-    bottom: 10px;
-    width: 100%;
+/* Main */
+#main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Quotes */
+.quote-container {
+    position: relative;
+    max-width: 600px;
+    margin: 40px auto;
     text-align: center;
-    z-index: 20;
-    font-size: 12px;
+}
+
+.quote {
+    position: absolute;
+    width: 100%;
+    opacity: 0;
+    transition: opacity 0.6s ease;
+    line-height: 1.6;
+    font-size: 16px;
+}
+
+.quote.active {
+    opacity: 1;
+    position: relative;
+}
+
+.quote-author {
+    margin-top: 8px;
+    font-size: 14px;
     opacity: 0.8;
+}
+
+/* Footer */
+footer {
+    margin-top: auto;
+    text-align: center;
+    padding: 20px 0;
 }
 </style>
 </head>
 
 <body>
-
-<!-- BACKGROUND IMAGES -->
-<div id="background">
-    <div class="bg-slide active" style="background-image: url('LU1.jpg');"></div>
-    <div class="bg-slide" style="background-image: url('GT10.jpg');"></div>
-    <div class="bg-slide" style="background-image: url('DW1.jpg');"></div>
-    <div class="bg-slide" style="background-image: url('HD4.jpg');"></div>
-</div>
 
 <!-- Rotate Overlay -->
 <div id="rotate-overlay">
@@ -147,27 +155,30 @@ footer {
         <a href="About.html">About</a>
     </div>
 </div>
+    
+<div id="main-content">
+
+</div>
 
 <script>
-/* ================= BACKGROUND FADE ================= */
-const slides = document.querySelectorAll(".bg-slide");
-let current = 0;
+const quotes = document.querySelectorAll("#quotes .quote");
+let index = 0;
 
-function nextBackground() {
-    slides[current].classList.remove("active");
-    current = (current + 1) % slides.length;
-    slides[current].classList.add("active");
+function nextQuote() {
+    quotes.forEach(q => q.classList.remove("active"));
+    index = (index + 1) % quotes.length;
+    quotes[index].classList.add("active");
 }
 
-setInterval(nextBackground, 6000);
+setInterval(nextQuote, 8000);
 
-/* ================= FADE-IN ================= */
+/* Fade-in */
 window.addEventListener("load", () => {
     document.body.classList.add("loaded");
     checkOrientation();
 });
 
-/* ================= ORIENTATION CHECK ================= */
+/* Orientation Check */
 function checkOrientation() {
     const overlay = document.getElementById("rotate-overlay");
 
