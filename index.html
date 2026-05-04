@@ -44,15 +44,9 @@ body.locked {
     padding: 20px;
 }
 
-/* Hide overlay in landscape */
-@media screen and (orientation: landscape) {
-    #rotate-overlay {
-        display: none;
-    }
-}
-
-/* Hide overlay on desktop */
-@media screen and (min-width: 768px) {
+/* Hide overlay in landscape or desktop */
+@media screen and (orientation: landscape),
+screen and (min-width: 768px) {
     #rotate-overlay {
         display: none;
     }
@@ -101,58 +95,11 @@ a:hover {
     align-items: center;
 }
 
-/* Slider */
-.slider { 
-    position: relative; 
-    width: 1000px; 
-    height: 700px; 
-    overflow: hidden; 
-    margin-top: 20px;
-} 
-
-.slides { 
-    display: flex; 
-    width: 100%; 
-    height: 100%; 
-    transition: transform 0.6s ease-in-out; 
-} 
-
-.slide {
-    flex: 0 0 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: black;
-}
-
-.slide img {
-    max-width: 100%;
-    max-height: 100%;
-    object-fit: contain;
-}
-
-/* Arrows */
-.arrow { 
-    position: absolute; 
-    top: 50%; 
-    transform: translateY(-50%); 
-    font-size: 30px; 
-    background: rgba(0,0,0,0.5); 
-    color: white; 
-    border: none; 
-    cursor: pointer; 
-    padding: 10px; 
-    z-index: 10;
-}
-
-.left { left: 10px; } 
-.right { right: 10px; } 
-
-/* Quotes Section */
+/* Quotes */
 .quote-container {
     position: relative;
     max-width: 600px;
-    margin: 25px auto;
+    margin: 40px auto;
     text-align: center;
 }
 
@@ -181,14 +128,6 @@ footer {
     margin-top: auto;
     text-align: center;
     padding: 20px 0;
-}
-
-/* Responsive */
-@media (max-width: 1024px) {
-    .slider {
-        width: 90%;
-        height: auto;
-    }
 }
 </style>
 </head>
@@ -259,45 +198,16 @@ footer {
 </div>
 
 <script>
+const quotes = document.querySelectorAll("#quotes .quote");
 let index = 0;
 
-const slides = document.getElementById("slides");
-const totalSlides = slides.children.length;
-
-const quotes = document.querySelectorAll("#quotes .quote");
-const totalQuotes = quotes.length;
-
-let slideInterval;
-
-function updateSlide() {
-    slides.style.transform = "translateX(" + (-index * 100) + "%)";
-
+function nextQuote() {
     quotes.forEach(q => q.classList.remove("active"));
-    quotes[index % totalQuotes].classList.add("active");
+    index = (index + 1) % quotes.length;
+    quotes[index].classList.add("active");
 }
 
-function nextSlide() {
-    index = (index + 1) % totalSlides;
-    updateSlide();
-    resetInterval();
-}
-
-function prevSlide() {
-    index = (index - 1 + totalSlides) % totalSlides;
-    updateSlide();
-    resetInterval();
-}
-
-function startInterval() {
-    slideInterval = setInterval(nextSlide, 10000);
-}
-
-function resetInterval() {
-    clearInterval(slideInterval);
-    startInterval();
-}
-
-startInterval();
+setInterval(nextQuote, 8000);
 
 /* Fade-in */
 window.addEventListener("load", () => {
@@ -321,7 +231,6 @@ function checkOrientation() {
 window.addEventListener("resize", checkOrientation);
 </script>
 
-<!-- Footer -->
 <footer>
     <small>&copy;2026 - Adrien Mathieu</small>
 </footer>
